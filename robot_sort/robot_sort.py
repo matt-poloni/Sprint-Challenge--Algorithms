@@ -92,12 +92,117 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    #####################
+    
     def sort(self):
+        # Alternating bi-directional bubble sort
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # Pick up first item
+        self.swap_item()
+        # Bubble() sort to the right
+        # Until a pass makes no swaps:
+        while not self.light_is_on():
+            self.set_light_on()
+            # Bubble() sort in opposite direction
+            if self.bubble_r():
+                break
+            # self.set_light_on()
+            self.bubble_l()
+        self.swap_item()
+    def bubble_r(self):
+        # Turn light on, signaling no swaps
+        # self.set_light_on()
+        # While you can move right/left:
+        while self.can_move_right():
+            # Move right/left
+            self.move_right()
+            # If the held item is smaller/larger:
+            if self.compare_item() in [0, -1]:
+                # Fill() empty slot
+                # self.fill_l()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+                # (kick back to while loop)
+            # Else if the held item is larger/smaller:
+            elif self.compare_item() == 1:
+                # Swap items
+                self.swap_item()
+                # Fill() empty slot
+                # self.fill_l()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+                # Turn light off, signaling a swap
+                self.set_light_off()
+                # (kick back to while loop)
+        # Return whether or not the light is on
+        return self.light_is_on()
+    def bubble_l(self):
+        # Turn light on, signaling no swaps
+        # self.set_light_on()
+        # While you can move right/left:
+        while self.can_move_left():
+            # Move right/left
+            self.move_left()
+            # If the held item is smaller/larger:
+            if self.compare_item() in [0, 1]:
+                # Fill() empty slot
+                # self.fill_r()
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                # (kick back to while loop)
+            # Else if the held item is larger/smaller:
+            elif self.compare_item() == -1:
+                # Swap items
+                self.swap_item()
+                # Fill() empty slot
+                # self.fill_r()
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                # Turn light off, signaling a swap
+                self.set_light_off()
+                # (kick back to while loop)
+        # Return whether or not the light is on
+        return self.light_is_on()
+    def fill_r(self):
+        # Move left/right
+        self.move_right()
+        # If the new position is empty:
+        if self.compare_item is None:
+            # Put item down
+            self.swap_item()
+        # Else:
+        else:
+            # Recurse back into fill()
+            self.fill_r()
+        # Move right/left
+        self.move_left()
+        # Pick up larger/smaller item
+        self.swap_item()
+    def fill_l(self):
+        # Move left/right
+        self.move_left()
+        # If the new position is empty:
+        if self.compare_item is None:
+            # Put item down
+            self.swap_item()
+        # Else:
+        else:
+            # Recurse back into fill()
+            self.fill_l()
+        # Move right/left
+        self.move_right()
+        # Pick up larger/smaller item
+        self.swap_item()
 
 
 if __name__ == "__main__":
