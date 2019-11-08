@@ -121,7 +121,10 @@ class SortingRobot:
     def fill(self):
         pass
         # Move left/right
-        # Put item down
+        # If the new position is empty:
+            # Put item down
+        # Else:
+            # Recurse back into fill()
         # Move right/left
         # Pick up larger/smaller item
 
