@@ -39,3 +39,5 @@ function(is_broken_at_story):
     // Return the lowest floor at which the egg breaks
     return l_broken
 ```
+
+Because I'm halving the potential floors with every iteration through the while loop, **the complexity of this implementation is `O(log n)`.** Every other line of code is `O(1)` and any impact on the worst-case scenario is negligible. Of course, because we have to loop through until the two indices are next to each other, that's also the best-case scenario for the algorithm, since it won't know when it's already found `f` until it knows `f-1`.
