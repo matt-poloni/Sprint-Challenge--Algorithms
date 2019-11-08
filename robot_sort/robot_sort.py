@@ -92,11 +92,17 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    #####################
+    
     def sort(self):
+        # Alternating bi-directional bubble sort
         """
         Sort the robot's list.
         """
-        # Fill this out
+        # Pick up first item
+        # Bubble sort to the right
+        # Until a pass makes no swaps:
+            # Bubble sort in opposite direction
         pass
 
 
