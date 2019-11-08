@@ -99,11 +99,31 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        pass
         # Pick up first item
         # Bubble sort to the right
         # Until a pass makes no swaps:
             # Bubble sort in opposite direction
+    def bubble(self):
         pass
+        # Turn light on, signaling no swaps
+        # While you can move right/left:
+            # Move right/left
+            # If the held item is smaller/larger:
+                # Move left/right
+                # Put item down
+                # Move right/left
+                # Pick up larger/smaller item
+                # (kick back to while loop)
+            # Else if the held item is larger/smaller:
+                # Swap items
+                # Move left/right
+                # Put item down
+                # Move right/left
+                # Pick up larger/smaller item
+                # Turn light off, signaling a swap
+                # (kick back to while loop)
+        # Return whether or not the light is on
 
 
 if __name__ == "__main__":
